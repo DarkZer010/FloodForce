@@ -33,16 +33,20 @@ class httpFlood:
                 try:
                     resultado = urlparse(url)
                     return all([resultado.scheme, resultado.netloc])
+                    
                 except ValueError:
                     print(Fore.RED + "ERRO DE VALOR")
                     exit()
-
-            if validar_url(url):
-                print(Fore.GREEN + "url valida\n")
+                    
+            test_get = requests.get(url)    
+            if test_get.status_code == 200:
+                if validar_url(url):
+                	print(Fore.GREEN + "url valida\n")
+                	
             else:
-                print(Fore.YELLOW + "url invalida")
-                time.sleep(1)
-                exit()
+                 	print(Fore.YELLOW + "url invalida")
+                 	time.sleep(1)
+                 	exit()
 
             for i in range(1, 100000000000):
                 get = requests.get(url)
